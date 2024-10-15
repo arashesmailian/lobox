@@ -1,4 +1,6 @@
+import React from "react";
 import { FC, useState } from "react";
+import styles from "./styles.module.scss";
 
 type AddOptionInputProps = {
   onAddOption: (option: string) => void;
@@ -7,7 +9,7 @@ type AddOptionInputProps = {
 const AddOptionInput: FC<AddOptionInputProps> = ({ onAddOption }) => {
   const [inputValue, setInputValue] = useState("");
 
-  const handleKeyPress = (event: KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && inputValue.trim()) {
       onAddOption(inputValue.trim());
       setInputValue("");
@@ -17,6 +19,7 @@ const AddOptionInput: FC<AddOptionInputProps> = ({ onAddOption }) => {
   return (
     <input
       type="text"
+      className={styles.input}
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
       onKeyPress={handleKeyPress}

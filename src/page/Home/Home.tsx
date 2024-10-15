@@ -6,9 +6,12 @@ import styles from "./styles.module.scss";
 
 const Home = () => {
   const [options, setOptions] = useState<string[]>([
-    "Option 1",
-    "Option 2",
-    "Option 3",
+    "Education 🎓",
+    "Yeeeah, Science! 🔮",
+    "Art 🎭",
+    "Sport ⚽",
+    "Games 🎮",
+    "Health 🏥",
   ]);
 
   const handleAddOption = (option: string) => {

@@ -5,7 +5,7 @@
 }
 .dropdown_list {
   margin-top: 0.5rem;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -30,9 +30,15 @@
 }
 .maxHeight {
   border: 1px solid #ededed;
-  max-height: 10rem;
+  max-height: 15rem;
   overflow: scroll;
   transition: max-height 0.15s ease-out;
+  ::-webkit-scrollbar-track {
+    background: transparent; /* Make the background transparent */
+  }
+  ::-webkit-scrollbar-track:hover {
+    background-color: red; /* Change color on hover */
+  }
 }
 .minHeight {
   border: 1px solid transparent;
@@ -41,7 +47,7 @@
 }
 
 .dropDownContainer {
-  border-radius: 0.3125rem;
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;

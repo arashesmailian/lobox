@@ -1,0 +1,4 @@
+* {
+  scrollbar-width: thin; /* Makes the scrollbar smaller */
+  scrollbar-color: #888 transparent; /* Sets thumb color and transparent track */
+}
