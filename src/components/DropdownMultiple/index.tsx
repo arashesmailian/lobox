@@ -1,23 +1,25 @@
-import { FC, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type FC } from "react";
 import clsx from "clsx";
-import styles from "./DropDownMultiple.module.scss";
 
-interface Props {
-  data: string[];
+import styles from "./styles.module.scss";
+
+type DropdownMultipleProps = {
+  options: string[];
   title: string;
-}
+};
 
-const DropdownMultiple: FC<Props> = ({ data, title }) => {
+const DropdownMultiple: FC<DropdownMultipleProps> = ({ options, title }) => {
   // logics for dropdown auto closing
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const clickEventListener = (e) => {
+  const clickEventListener = (e: MouseEvent) => {
     if (!dropdownRef?.current.contains(e.target)) {
       setIsOpen(false);
     }
   };
+
   const handleSelectOption = (option: string) => {
     if (selectedOptions.includes(option)) {
       setSelectedOptions(
@@ -28,6 +30,10 @@ const DropdownMultiple: FC<Props> = ({ data, title }) => {
     }
   };
 
+  const handleToggleDropDown = () => {
+    setIsOpen((prev) => !prev);
+  };
+
   useEffect(() => {
     if (isOpen) {
       window.addEventListener("mouseup", clickEventListener);
@@ -36,10 +42,6 @@ const DropdownMultiple: FC<Props> = ({ data, title }) => {
       window.removeEventListener("mouseup", clickEventListener);
     };
   }, [isOpen]);
-
-  const handleToggleDropDown = () => {
-    setIsOpen((prev) => !prev);
-  };
 
   return (
     <div ref={dropdownRef} className={styles.container}>
@@ -78,7 +80,7 @@ const DropdownMultiple: FC<Props> = ({ data, title }) => {
           isOpen ? styles.maxHeight : styles.minHeight
         )}
       >
-        {data.map((item, index) => (
+        {options.map((item, index) => (
           <li
             key={index}
             className={

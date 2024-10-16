@@ -1,7 +1,8 @@
-import AddOptionInput from "components/AddOptionInput";
 import { useState } from "react";
-import DropDownMultiple from "../../components/DropdownMultiple/DropdownMultiple";
-import React from "react";
+
+import AddOptionInput from "@components/AddOptionInput";
+import DropDownMultiple from "@components/DropdownMultiple";
+
 import styles from "./styles.module.scss";
 
 const Home = () => {
@@ -20,7 +21,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <AddOptionInput onAddOption={handleAddOption} />
-      <DropDownMultiple data={options} title="Science" />
+      <DropDownMultiple options={options} title="Science" />
     </div>
   );
 };
